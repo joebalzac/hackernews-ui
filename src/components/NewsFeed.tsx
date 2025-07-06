@@ -11,16 +11,18 @@ export const NewsFeed = () => {
   return (
     <div>
       <div className="flex items-center gap-4">
-        <h1 className="text-4xl sm:text-6xl font-black text-center sm:text-left text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 via-purple-500 to-blue-500">
-          HackerNews
-        </h1>
+        <header className="py-40 sm:py-20">
+          <h1 className="text-4xl sm:text-6xl font-black text-center sm:text-left text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 via-purple-500 to-blue-500">
+            HackerNews
+          </h1>
+        </header>
+
         <img
           src="/anonymous.png"
           alt="Anonymous Logo"
           className="w-16 h-auto mt-4"
         />
       </div>
-
       <div>
         {news.map((n) => (
           <NewsPost news={n} />
