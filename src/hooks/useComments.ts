@@ -8,7 +8,10 @@ export const useComments = (commentIds: number[] | undefined) => {
   const [error, setError] = useState("");
 
   const fetchComments = async () => {
-    if (!commentIds || commentIds.length === 0) return;
+    if (!commentIds || commentIds.length === 0) {
+      setComments([]);
+      return;
+    }
 
     try {
       setIsLoading(true);
@@ -24,7 +27,7 @@ export const useComments = (commentIds: number[] | undefined) => {
 
   useEffect(() => {
     fetchComments();
-  }, []);
+  }, [commentIds]);
 
   return { comments, isLoading, error };
 };

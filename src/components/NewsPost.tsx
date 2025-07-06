@@ -1,6 +1,6 @@
+import { Link } from "react-router-dom";
 import type { News } from "../types/types";
 import { getTimeAgo } from "../utilities/getTimeAgo";
-import { useComments } from "../hooks/useComments";
 
 type Props = {
   news: News;
@@ -20,9 +20,14 @@ export const NewsPost = ({ news }: Props) => {
         &#x2022;
         <p>{getTimeAgo(news.time)}</p>
         &#x2022;
-        <a className=" underline" href="">
-          {news.kids?.length} comments
-        </a>
+        {typeof news.descendants === "number" && news.descendants > 0 && (
+          <>
+            &#x2022;
+            <Link to={`/comments/${news.id}`} className="underline">
+              {news.descendants} comments
+            </Link>
+          </>
+        )}
       </div>
     </div>
   );

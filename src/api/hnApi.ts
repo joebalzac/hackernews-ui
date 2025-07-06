@@ -23,6 +23,13 @@ export const hnApi = {
     }
   },
 
+  getStory: async (id: number): Promise<News> => {
+    const url = `${BASE_URL}/item/${id}.json`;
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`Failed to fetch story ${id}`);
+    return res.json();
+  },
+
   getComments: async (id: number): Promise<Comments> => {
     const url = `${BASE_URL}/item/${id}.json`;
     const res = await fetch(url);
