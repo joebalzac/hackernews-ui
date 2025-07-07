@@ -18,16 +18,13 @@ export const NewsPost = ({ news }: Props) => {
       <div className="text-sm font-normal text-gray-400 flex items-center gap-1 mb-6">
         <p>{news.score} points</p>
         &#x2022;
-        <p>{getTimeAgo(news.time)}</p>
-        &#x2022;
         {typeof news.descendants === "number" && news.descendants > 0 && (
-          <>
-            &#x2022;
-            <Link to={`/comments/${news.id}`} className="underline">
-              {news.descendants} comments
-            </Link>
-          </>
+          <Link to={`/comments/${news.id}`} className="underline">
+            {news.descendants} comments
+          </Link>
         )}
+        &#x2022;
+        <p>{getTimeAgo(news.time)}</p>
       </div>
     </div>
   );
